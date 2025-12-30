@@ -62,8 +62,8 @@ export function Hero() {
           <div className="relative">
             <div className="relative overflow-hidden rounded-3xl shadow-2xl">
               <Image
-                src="/modern-english-classroom-with-students.jpg"
-                alt="Học viên GNP English Academy"
+                src="/trangchu-ava.jpg"
+                alt="ảnh trang chủ GNP"
                 width={600}
                 height={500}
                 className="h-full w-full object-cover"
