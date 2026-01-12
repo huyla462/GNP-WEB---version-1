@@ -22,10 +22,6 @@ export function Header() {
     { name: "Trang chủ", href: "/" },
     { name: "Tin tức", href: "/tin-tuc" },
     { name: "Khóa học", href: "/khoa-hoc", hasDropdown: true },
-    { name: "Chứng chỉ", href: "/chung-chi" },
-    { name: "Lộ trình học", href: "/lo-trinh" },
-    { name: "Tài liệu", href: "/tai-lieu" },
-    { name: "Vinh danh", href: "/vinh-danh" },
     { name: "Tuyển dụng", href: "/tuyen-dung" },
     { name: "Liên hệ", href: "/lien-he" },
   ]

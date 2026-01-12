@@ -3,8 +3,9 @@ import { Hero } from "@/components/hero"
 import { FlashSale } from "@/components/flash-sale"
 import { StatsSection } from "@/components/stats-section"
 import { About } from "@/components/about"
-import { LearningSpaceCarousel } from "@/components/learning-space-carousel"
+import { GPSPhilosophy } from "@/components/gps-philosophy"
 import { TeamCarousel } from "@/components/team-carousel"
+import { StudentAchievementsCarousel } from "@/components/student-achievements-carousel"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 
@@ -17,8 +18,9 @@ export default function Home() {
         <FlashSale />
         <StatsSection />
         <About />
-        <LearningSpaceCarousel />
+        <GPSPhilosophy />
         <TeamCarousel />
+        <StudentAchievementsCarousel />
         <Contact />
       </main>
       <Footer />
