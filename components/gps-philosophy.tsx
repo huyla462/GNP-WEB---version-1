@@ -44,7 +44,7 @@ export function GPSPhilosophy() {
       icon: Sparkles,
       title: "Skills",
       titleVi: "Kỹ Năng Hội Nhập – Bản Lĩnh Bước Ra Thế Giới",
-      shortDesc: "Với trung tâm, tiếng Anh và chứng chỉ không phải dự định đến",
+      shortDesc: "Với trung tâm, tiếng Anh ngày nay không chỉ là một môn học, mà là",
       description: "Phát triển các kỹ năng thực tế giúp học viên thành công trong học tập và cuộc sống toàn cầu.",
       highlights: [
         "Kỹ năng ngôn ngữ",
@@ -92,7 +92,7 @@ export function GPSPhilosophy() {
         {/* Three Pillars Grid */}
         <div
           ref={cardsRef}
-          className={`grid gap-8 md:grid-cols-3 mb-16 transition-all duration-700 ${
+          className={`grid grid-cols-1 gap-8 md:grid-cols-3 mb-16 transition-all duration-700 ${
             cardsVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >
@@ -153,7 +153,7 @@ export function GPSPhilosophy() {
         {/* Summary */}
         <Card className="border-2 border-primary/20 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5 shadow-xl">
           <CardContent className="p-8 md:p-12">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
                 <h3 className="mb-4 text-2xl font-bold text-foreground">Hệ Phương Pháp Đào Tạo G.P.S</h3>
                 <p className="mb-4 leading-relaxed text-muted-foreground">

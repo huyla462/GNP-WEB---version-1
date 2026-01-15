@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import RelatedNewsSidebar from "@/components/related-news-sidebar"
 
 // This would normally come from a database or CMS
 const getArticleData = (id: string) => {
@@ -128,6 +129,103 @@ const getArticleData = (id: string) => {
   return articles[id] || null
 }
 
+const getAllArticlesData = () => {
+  return {
+    "su-kien": [
+      {
+        id: 1,
+        title: "VIỆT NAM VÔ ĐỊCH!",
+        date: "2025-12-19",
+        image: "/summer-english-class-opening-ceremony.jpg",
+      },
+      {
+        id: 2,
+        title: "Ngày hội Tiếng Anh GNP 2025",
+        date: "2025-01-10",
+        image: "/english-festival-event.jpg",
+      },
+      {
+        id: 3,
+        title: "KIẾN THỨC CŨNG CỐ – ĐỘT PHÁ ĐIỂM SỐ",
+        date: "2025-12-17",
+        image: "/english-festival-event.jpg",
+      },
+      {
+        id: 4,
+        title: "HỆ THỐNG GIÁO DỤC GNP ĐỒNG HÀNH CÙNG SINH VIÊN HỌC VIÊN CĂN BỘ TP. HỒ...",
+        date: "2025-12-13",
+        image: "/english-festival-event.jpg",
+      },
+      {
+        id: 5,
+        title: "ĐỐI BÓNG GNP SỐI NỖI THAM GIA MÔN BÓNG ĐÁ TẠI ĐẠI HỘI TDTT LIÊN PHƯỜNG...",
+        date: "2025-12-10",
+        image: "/english-festival-event.jpg",
+      },
+    ],
+    "thanh-tich": [
+      {
+        id: 1,
+        title: "ĐẠI HỘI HỘI DOANH NGHIỆP THÀNH MỸ TÂY LẦN THỨ I",
+        date: "2025-12-17",
+        image: "/student-achievement-ielts-certificate.jpg",
+      },
+      {
+        id: 2,
+        title: "100% học viên lớp IELTS đạt mục tiêu",
+        date: "2025-01-08",
+        image: "/successful-ielts-students-class.jpg",
+      },
+      {
+        id: 3,
+        title: "DEAR SANTA... (LÁ THƯ GỬI ÔNG GIÁ NOEL)",
+        date: "2025-12-13",
+        image: "/successful-ielts-students-class.jpg",
+      },
+      {
+        id: 4,
+        title: "KIẾN THỨC CŨNG CỐ – ĐỘT PHÁ ĐIỂM SỐ!",
+        date: "2025-12-11",
+        image: "/successful-ielts-students-class.jpg",
+      },
+      {
+        id: 5,
+        title: "CHÚC MỪNG BÀ NGUYỄN THỊ THÚY",
+        date: "2025-12-09",
+        image: "/successful-ielts-students-class.jpg",
+      },
+    ],
+    "khuyen-mai": [
+      {
+        id: 1,
+        title: "Ưu đãi đặc biệt khóa học IELTS Tết 2025",
+        date: "2025-01-14",
+        image: "/ielts-course-promotion-discount.jpg",
+      },
+      {
+        id: 2,
+        title: "Tặng tài liệu học tập trị giá 2 triệu đồng",
+        date: "2025-01-11",
+        image: "/free-study-materials-books.jpg",
+      },
+    ],
+    "phuong-phap-hoc": [
+      {
+        id: 1,
+        title: "5 bí quyết học từ vựng hiệu quả",
+        date: "2025-01-13",
+        image: "/vocabulary-learning-methods.jpg",
+      },
+      {
+        id: 2,
+        title: "Cách luyện phát âm chuẩn như người bản ngữ",
+        date: "2025-01-09",
+        image: "/pronunciation-practice-speaking.jpg",
+      },
+    ],
+  }
+}
+
 export default async function ArticlePage({
   params,
 }: {
@@ -135,6 +233,14 @@ export default async function ArticlePage({
 }) {
   const { category, id } = await params
   const article = getArticleData(id)
+  const allCategoryArticles = getAllArticlesData()
+
+  const allArticles = Object.entries(allCategoryArticles).flatMap(([categoryKey, articles]) =>
+    articles.map((article) => ({
+      ...article,
+      category: categoryKey,
+    })),
+  )
 
   if (!article) {
     return (
@@ -160,66 +266,75 @@ export default async function ArticlePage({
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       <Header />
       <main className="py-8 md:py-16">
-        <article className="container mx-auto px-4">
-          {/* Back Button */}
+        {/* Flex container with sidebar layout */}
+        <div className="container mx-auto px-4">
           <Button asChild variant="ghost" className="mb-8">
             <Link href="/tin-tuc">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Quay lại tin tức
             </Link>
           </Button>
+        </div>
 
-          {/* Article Header */}
-          <div className="mx-auto max-w-4xl">
-            <div className="mb-6">
-              <span className="inline-block rounded-full bg-primary px-4 py-1 text-sm font-semibold text-primary-foreground">
-                {article.category}
-              </span>
-            </div>
-            <h1 className="mb-6 text-balance text-4xl font-bold md:text-5xl">{article.title}</h1>
-            <div className="mb-8 flex flex-wrap items-center gap-6 text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
-                <span>{new Date(article.date).toLocaleDateString("vi-VN")}</span>
+        <article className="container mx-auto px-4 flex gap-8">
+          {/* Main Content */}
+          <div className="flex-1 min-w-0">
+            <div className="mx-auto max-w-4xl">
+              <div className="mb-6">
+                <span className="inline-block rounded-full bg-primary px-4 py-1 text-sm font-semibold text-primary-foreground">
+                  {article.category}
+                </span>
               </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-5 w-5" />
-                <span>{article.readTime}</span>
+              <h1 className="mb-6 text-balance text-4xl font-bold md:text-5xl">{article.title}</h1>
+              <div className="mb-8 flex flex-wrap items-center gap-6 text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Calendar className="h-5 w-5" />
+                  <span>{new Date(article.date).toLocaleDateString("vi-VN")}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="h-5 w-5" />
+                  <span>{article.readTime}</span>
+                </div>
+                <Button variant="outline" size="sm" className="ml-auto gap-2 bg-transparent">
+                  <Share2 className="h-4 w-4" />
+                  Chia sẻ
+                </Button>
               </div>
-              <Button variant="outline" size="sm" className="ml-auto gap-2 bg-transparent">
-                <Share2 className="h-4 w-4" />
-                Chia sẻ
-              </Button>
-            </div>
 
-            {/* Featured Image */}
-            <div className="relative mb-12 aspect-video overflow-hidden rounded-2xl">
-              <Image src={article.image || "/placeholder.svg"} alt={article.title} fill className="object-cover" />
-            </div>
+              {/* Featured Image */}
+              <div className="relative mb-12 aspect-video overflow-hidden rounded-2xl">
+                <Image src={article.image || "/placeholder.svg"} alt={article.title} fill className="object-cover" />
+              </div>
 
-            {/* Article Content */}
-            <div
-              className="prose prose-lg max-w-none"
-              dangerouslySetInnerHTML={{ __html: article.content }}
-              style={{
-                lineHeight: "1.8",
-              }}
-            />
+              {/* Article Content */}
+              <div
+                className="prose prose-lg max-w-none"
+                dangerouslySetInnerHTML={{ __html: article.content }}
+                style={{
+                  lineHeight: "1.8",
+                }}
+              />
 
-            {/* CTA Section */}
-            <div className="mt-16 rounded-2xl bg-gradient-to-r from-primary to-primary/80 p-8 text-center text-primary-foreground">
-              <h3 className="mb-4 text-2xl font-bold">Quan tâm đến khóa học của chúng tôi?</h3>
-              <p className="mb-6 text-primary-foreground/90">Đăng ký ngay để nhận tư vấn chi tiết và ưu đãi đặc biệt</p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Button asChild size="lg" variant="secondary">
-                  <Link href="/#dang-ky-tu-van">Đăng ký tư vấn</Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 border-white/20">
-                  <Link href="/khoa-hoc">Xem khóa học</Link>
-                </Button>
+              {/* CTA Section */}
+              <div className="mt-16 rounded-2xl bg-gradient-to-r from-primary to-primary/80 p-8 text-center text-primary-foreground">
+                <h3 className="mb-4 text-2xl font-bold">Quan tâm đến khóa học của chúng tôi?</h3>
+                <p className="mb-6 text-primary-foreground/90">
+                  Đăng ký ngay để nhận tư vấn chi tiết và ưu đãi đặc biệt
+                </p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Button asChild size="lg" variant="secondary">
+                    <Link href="/#dang-ky-tu-van">Đăng ký tư vấn</Link>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 border-white/20">
+                    <Link href="/khoa-hoc">Xem khóa học</Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
+
+          {/* Sidebar with related news articles */}
+          <RelatedNewsSidebar articles={allArticles} currentArticleId={Number.parseInt(id)} />
         </article>
       </main>
       <Footer />

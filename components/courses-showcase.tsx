@@ -24,6 +24,7 @@ import {
 } from "lucide-react"
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer"
 import Image from "next/image"
+import { CoursesAccordion } from "./courses-accordion"
 
 const courseCategories = [
   {
@@ -183,6 +184,45 @@ const coursesData = {
   ],
 }
 
+const coursesList = [
+  {
+    title: "Tiếng Anh Mẫu Giáo (Từ 4-6 Tuổi)",
+    slug: "/khoa-hoc/mau-giao",
+  },
+  {
+    title: "Tiếng Anh Thiếu Nhi (6-11 Tuổi)",
+    slug: "/khoa-hoc/thieu-nien",
+  },
+  {
+    title: "Tiếng Anh Thiếu Niên (11-15 Tuổi)",
+    slug: "/khoa-hoc/thieu-nien",
+  },
+  {
+    title: "Tiếng Anh Người Lớn",
+    slug: "/khoa-hoc/nguoi-lon",
+  },
+  {
+    title: "Tiếng Anh Giao Tiếp",
+    slug: "/khoa-hoc/giao-tiep",
+  },
+  {
+    title: "Luyện Thi IELTS",
+    slug: "/khoa-hoc/ielts",
+  },
+  {
+    title: "Luyện Thi TOEIC",
+    slug: "/khoa-hoc/toeic",
+  },
+  {
+    title: "Tiếng Anh Doanh Nghiệp",
+    slug: "/khoa-hoc/doanh-nghiep",
+  },
+  {
+    title: "Du Học Định Cư",
+    slug: "/khoa-hoc/du-hoc",
+  },
+]
+
 function CourseCard({ course, index }: { course: any; index: number }) {
   const { ref, isIntersecting } = useIntersectionObserver({ threshold: 0.1 })
 
@@ -265,16 +305,39 @@ function CourseCard({ course, index }: { course: any; index: number }) {
 }
 
 export function CoursesShowcase() {
+  const [activeMainTab, setActiveMainTab] = useState("courses")
   const [activeTab, setActiveTab] = useState("kids")
   const { ref: headerRef, isIntersecting: headerVisible } = useIntersectionObserver({ threshold: 0.1 })
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-orange-50 via-white to-teal-50 py-16 md:py-24">
+    <section className="relative overflow-hidden bg-white py-16 md:py-24">
       {/* Decorative elements */}
       <div className="absolute left-0 top-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-200/20 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-teal-200/20 blur-3xl" />
 
       <div className="container relative mx-auto px-4">
+        {/* Main tab navigation for Tin tức, Khóa học, Tuyển dụng */}
+        <div className="mb-12 flex justify-center gap-4">
+          <Link
+            href="/tin-tuc"
+            className="rounded-full border-2 border-gray-200 px-6 py-2 font-semibold text-slate-700 transition-all hover:border-orange-500 hover:text-orange-500"
+          >
+            Tin tức
+          </Link>
+          <button
+            className="rounded-full border-2 border-orange-500 bg-orange-100 px-6 py-2 font-semibold text-orange-600"
+            onClick={() => setActiveMainTab("courses")}
+          >
+            Khóa học
+          </button>
+          <Link
+            href="/tuyen-dung"
+            className="rounded-full border-2 border-gray-200 px-6 py-2 font-semibold text-slate-700 transition-all hover:border-orange-500 hover:text-orange-500"
+          >
+            Tuyển dụng
+          </Link>
+        </div>
+
         {/* Header */}
         <div
           ref={headerRef}
@@ -299,35 +362,56 @@ export function CoursesShowcase() {
           </p>
         </div>
 
-        {/* Tabs Navigation */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="mx-auto mb-12 grid h-auto w-full max-w-3xl grid-cols-2 gap-4 bg-transparent md:grid-cols-4">
-            {courseCategories.map((category) => (
-              <TabsTrigger
-                key={category.id}
-                value={category.id}
-                className="group relative overflow-hidden rounded-2xl border-2 bg-white p-6 shadow-lg transition-all hover:scale-105 data-[state=active]:border-primary data-[state=active]:shadow-xl"
-              >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 transition-opacity group-data-[state=active]:opacity-10`}
-                />
-                <category.icon className="mx-auto mb-2 h-8 w-8 text-muted-foreground transition-colors group-data-[state=active]:text-primary" />
-                <div className="text-sm font-semibold">{category.label}</div>
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          {/* Tabs Content */}
-          {Object.entries(coursesData).map(([key, courses]) => (
-            <TabsContent key={key} value={key} className="mt-0">
-              <div className="grid gap-8 md:grid-cols-2">
-                {courses.map((course, index) => (
-                  <CourseCard key={index} course={course} index={index} />
-                ))}
-              </div>
-            </TabsContent>
+        <div className="mx-auto max-w-3xl space-y-3 mb-16">
+          {coursesList.map((course, index) => (
+            <Link
+              key={index}
+              href={course.slug}
+              className="group block rounded-lg border-2 border-gray-200 bg-white p-4 transition-all hover:-translate-y-1 hover:border-orange-500 hover:shadow-md md:p-5"
+            >
+              <h3 className="text-base font-semibold text-slate-800 transition-colors group-hover:text-orange-500 md:text-lg">
+                {course.title}
+              </h3>
+            </Link>
           ))}
-        </Tabs>
+        </div>
+
+        {/* Tabs Navigation - Advanced view for desktop */}
+        <div className="hidden lg:block">
+          <h2 className="mb-8 text-center text-3xl font-bold">Chi tiết khóa học</h2>
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <TabsList className="mx-auto mb-12 grid h-auto w-full max-w-3xl grid-cols-4 gap-4 bg-transparent">
+              {courseCategories.map((category) => (
+                <TabsTrigger
+                  key={category.id}
+                  value={category.id}
+                  className="group relative overflow-hidden rounded-2xl border-2 bg-white p-6 shadow-lg transition-all hover:scale-105 data-[state=active]:border-primary data-[state=active]:shadow-xl"
+                >
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 transition-opacity group-data-[state=active]:opacity-10`}
+                  />
+                  <category.icon className="mx-auto mb-2 h-8 w-8 text-muted-foreground transition-colors group-data-[state=active]:text-primary" />
+                  <div className="text-sm font-semibold">{category.label}</div>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {/* Tabs Content */}
+            {Object.entries(coursesData).map(([key, courses]) => (
+              <TabsContent key={key} value={key} className="mt-0">
+                <div className="grid gap-8 md:grid-cols-2">
+                  {courses.map((course, index) => (
+                    <CourseCard key={index} course={course} index={index} />
+                  ))}
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
+        </div>
+
+        <div className="mb-12 block md:hidden">
+          <CoursesAccordion />
+        </div>
 
         {/* CTA Section */}
         <div className="mt-16 rounded-3xl bg-gradient-to-r from-orange-500 to-teal-500 p-8 text-center text-white shadow-2xl md:p-12">

@@ -29,20 +29,26 @@ export function Contact() {
 
   const branches = [
     {
-      name: "Chi nhánh 1 (Trụ sở chính)",
-      address: "33B Trần Bình Trọng, phường Bình Lợi Trung, Thành phố Hồ Chí Minh",
+      name: "Trụ sở chính",
+      address: "33B Trần Bình Trọng, P. Bình Lợi Trung, TP. HCM",
       mapUrl:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.854!2d106.689!3d10.823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752921c1ad4ddd%3A0x7c1c3d3b3f5e5e5e!2s33B%20Tr%E1%BA%A7n%20B%C3%ACnh%20Tr%E1%BB%8Dng%2C%20B%C3%ACnh%20L%E1%BB%A3i%20Trung%2C%20B%C3%ACnh%20Th%E1%BA%A1nh%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh!5e0!3m2!1svi!2s!4v1234567890",
     },
     {
-      name: "Chi nhánh 2",
-      address: "145 Nguyễn Văn Thương, Thành phố Hồ Chí Minh",
+      name: "Cơ sở 1",
+      address: "46A Trần Bình Trọng, P. Bình Lợi Trung, TP. HCM",
       mapUrl:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.854!2d106.689!3d10.823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ5JzIyLjgiTiAxMDbCsDQxJzIwLjQiRQ!5e0!3m2!1svi!2s!4v1234567890",
     },
     {
-      name: "Chi nhánh 3",
-      address: "134 Nơ Trang Long, Thành phố Hồ Chí Minh",
+      name: "Cơ sở 2",
+      address: "145 Nguyễn Văn Thương, P. Thanh Mỹ Tây, TP. HCM",
+      mapUrl:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.854!2d106.689!3d10.823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ5JzIyLjgiTiAxMDbCsDQxJzIwLjQiRQ!5e0!3m2!1svi!2s!4v1234567890",
+    },
+    {
+      name: "Cơ sở 3",
+      address: "134 Nơ Trang Long, P. Bình Thạnh, TP. HCM",
       mapUrl:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.854!2d106.689!3d10.823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ5JzIyLjgiTiAxMDbCsDQxJzIwLjQiRQ!5e0!3m2!1svi!2s!4v1234567890",
     },

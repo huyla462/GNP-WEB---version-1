@@ -61,10 +61,10 @@ export function LearningSpaceCarousel() {
     <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
             <span className="text-indigo-600">KHÔNG GIAN HỌC TẬP</span>
           </h2>
-          <p className="text-gray-700 text-lg max-w-3xl mx-auto">
+          <p className="text-gray-700 text-base md:text-lg max-w-3xl mx-auto">
             Môi trường học tập hiện đại, chuyên nghiệp và thân thiện tại GNP English Academy
           </p>
         </div>
@@ -73,10 +73,10 @@ export function LearningSpaceCarousel() {
           <Button
             variant="outline"
             size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur hover:bg-white shadow-lg h-12 w-12"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur hover:bg-white shadow-lg h-10 w-10 md:h-12 md:w-12"
             onClick={prevSlide}
           >
-            <ChevronLeft className="h-6 w-6" />
+            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
           </Button>
 
           <div className="overflow-hidden rounded-2xl shadow-2xl">
@@ -86,12 +86,12 @@ export function LearningSpaceCarousel() {
             >
               {learningSpaces.map((space, index) => (
                 <div key={index} className="flex-shrink-0 w-full relative">
-                  <div className="relative h-[400px] md:h-[500px]">
+                  <div className="relative h-64 md:h-80 lg:h-[500px]">
                     <Image src={space.image || "/placeholder.svg"} alt={space.title} fill className="object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                      <h3 className="text-3xl md:text-4xl font-bold mb-2">{space.title}</h3>
-                      <p className="text-lg md:text-xl opacity-90">{space.description}</p>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
+                      <h3 className="text-xl md:text-3xl lg:text-4xl font-bold mb-2">{space.title}</h3>
+                      <p className="text-sm md:text-lg lg:text-xl opacity-90">{space.description}</p>
                     </div>
                   </div>
                 </div>
@@ -102,10 +102,10 @@ export function LearningSpaceCarousel() {
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur hover:bg-white shadow-lg h-12 w-12"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur hover:bg-white shadow-lg h-10 w-10 md:h-12 md:w-12"
             onClick={nextSlide}
           >
-            <ChevronRight className="h-6 w-6" />
+            <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
           </Button>
         </div>
 

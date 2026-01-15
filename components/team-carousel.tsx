@@ -61,7 +61,7 @@ export function TeamCarousel() {
 
   const getVisibleMembers = () => {
     const members = []
-    const count = isMobile ? 1 : 3 // Show 1 on mobile, 3 on desktop
+    const count = isMobile ? 1 : 3
     for (let i = 0; i < count; i++) {
       members.push(teamMembers[(currentIndex + i) % teamMembers.length])
     }
@@ -71,14 +71,14 @@ export function TeamCarousel() {
   const cardWidth = isMobile ? "w-full" : "w-[calc(33.333%-1rem)]"
 
   return (
-    <section className="py-20 bg-gradient-to-br from-indigo-50 via-white to-teal-50">
+    <section className="py-16 md:py-20 bg-gradient-to-br from-indigo-50 via-white to-teal-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
             <span className="text-indigo-600">ĐỘI NGŨ GIÁO VIÊN</span>
           </h2>
-          <h3 className="text-2xl md:text-3xl font-bold text-coral-500 mb-6">CỦA HỆ THỐNG GIÁO DỤC GNP</h3>
-          <p className="text-gray-700 text-lg max-w-3xl mx-auto">
+          <h3 className="text-xl md:text-3xl font-bold text-orange-500 mb-6">CỦA HỆ THỐNG GIÁO DỤC GNP</h3>
+          <p className="text-gray-700 text-sm md:text-lg max-w-3xl mx-auto">
             Trái tim của Hệ thống giáo dục GNP là đội ngũ giáo viên chuyên môn cao, giàu kinh nghiệm, tận tâm và nhiệt
             huyết.
           </p>
@@ -88,21 +88,21 @@ export function TeamCarousel() {
           <Button
             variant="outline"
             size="icon"
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur hover:bg-white shadow-lg -ml-4 md:-ml-6 h-10 w-10 md:h-12 md:w-12"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur hover:bg-white shadow-lg -ml-3 md:-ml-6 h-10 w-10 md:h-12 md:w-12"
             onClick={prevSlide}
           >
             <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
           </Button>
 
           <div className="overflow-hidden px-4 md:px-8">
-            <div className="flex gap-4 md:gap-6 justify-center transition-transform duration-500 ease-in-out">
+            <div className="flex gap-3 md:gap-6 justify-center transition-transform duration-500 ease-in-out">
               {getVisibleMembers().map((member, index) => (
                 <div
                   key={`${member.name}-${index}`}
                   className={`flex-shrink-0 ${cardWidth} transition-all duration-500`}
                 >
                   <div className="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-2xl h-full">
-                    <div className="relative h-64 md:h-80 bg-gradient-to-br from-orange-100 to-gray-100">
+                    <div className="relative h-48 md:h-64 lg:h-80 bg-gradient-to-br from-orange-100 to-gray-100">
                       <Image
                         src={member.image || "/placeholder.svg"}
                         alt={member.name}
@@ -113,9 +113,9 @@ export function TeamCarousel() {
                         <Image src="/images/gnp-logo.png" alt="GNP" width={50} height={16} className="h-4 w-auto" />
                       </div>
                     </div>
-                    <div className="p-4 md:p-5 text-center bg-gradient-to-b from-orange-500 to-orange-600 text-white min-h-[100px] flex flex-col justify-center">
-                      <h4 className="font-bold text-base md:text-lg mb-2 line-clamp-2">{member.name}</h4>
-                      <p className="text-sm opacity-90 line-clamp-2">{member.position}</p>
+                    <div className="p-3 md:p-5 text-center bg-gradient-to-b from-orange-500 to-orange-600 text-white min-h-[80px] md:min-h-[100px] flex flex-col justify-center">
+                      <h4 className="font-bold text-sm md:text-lg mb-2 line-clamp-2">{member.name}</h4>
+                      <p className="text-xs md:text-sm opacity-90 line-clamp-2">{member.position}</p>
                     </div>
                   </div>
                 </div>
@@ -126,7 +126,7 @@ export function TeamCarousel() {
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur hover:bg-white shadow-lg -mr-4 md:-mr-6 h-10 w-10 md:h-12 md:w-12"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur hover:bg-white shadow-lg -mr-3 md:-mr-6 h-10 w-10 md:h-12 md:w-12"
             onClick={nextSlide}
           >
             <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
@@ -138,7 +138,7 @@ export function TeamCarousel() {
             <button
               key={index}
               className={`h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex ? "w-8 bg-coral-500" : "w-2 bg-gray-300"
+                index === currentIndex ? "w-8 bg-orange-500" : "w-2 bg-gray-300"
               }`}
               onClick={() => {
                 setCurrentIndex(index)
