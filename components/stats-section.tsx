@@ -15,7 +15,7 @@ export function StatsSection() {
   return (
     <section className="bg-gradient-to-br from-orange-600 to-orange-500 py-20 text-white">
       <div className="container mx-auto px-4">
-        <div ref={ref} className="mx-auto grid max-w-5xl gap-8 md:grid-cols-4">
+        <div ref={ref} className="mx-auto grid max-w-full gap-2 sm:gap-4 lg:gap-6 grid-cols-4">
           {stats.map((stat, idx) => (
             <div
               key={idx}
@@ -24,15 +24,15 @@ export function StatsSection() {
               }`}
               style={{ transitionDelay: `${idx * 100}ms` }}
             >
-              <div className="mb-4 flex justify-center">
+              <div className="mb-2 flex justify-center sm:mb-3">
                 <div
-                  className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br ${stat.gradient} shadow-xl`}
+                  className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br ${stat.gradient} shadow-lg sm:h-16 sm:w-16`}
                 >
-                  <stat.icon className="h-8 w-8 text-white" />
+                  <stat.icon className="h-6 w-6 text-white sm:h-8 sm:w-8" />
                 </div>
               </div>
-              <div className="mb-2 text-4xl font-bold">{stat.value}</div>
-              <div className="text-orange-100">{stat.label}</div>
+              <div className="mb-1 text-base font-bold sm:mb-2 sm:text-xl lg:text-2xl">{stat.value}</div>
+              <div className="text-xs text-orange-100 sm:text-sm">{stat.label}</div>
             </div>
           ))}
         </div>

@@ -320,19 +320,19 @@ export function CoursesShowcase() {
         <div className="mb-12 flex justify-center gap-4">
           <Link
             href="/tin-tuc"
-            className="rounded-full border-2 border-gray-200 px-6 py-2 font-semibold text-slate-700 transition-all hover:border-orange-500 hover:text-orange-500"
+            className="rounded-full border-2 border-transparent px-6 py-2 font-semibold text-slate-800 transition-all hover:text-orange-500"
           >
             Tin tức
           </Link>
           <button
-            className="rounded-full border-2 border-orange-500 bg-orange-100 px-6 py-2 font-semibold text-orange-600"
+            className="rounded-full border-2 border-orange-500 bg-white px-6 py-2 font-semibold text-orange-500"
             onClick={() => setActiveMainTab("courses")}
           >
             Khóa học
           </button>
           <Link
             href="/tuyen-dung"
-            className="rounded-full border-2 border-gray-200 px-6 py-2 font-semibold text-slate-700 transition-all hover:border-orange-500 hover:text-orange-500"
+            className="rounded-full border-2 border-transparent px-6 py-2 font-semibold text-slate-800 transition-all hover:text-orange-500"
           >
             Tuyển dụng
           </Link>
@@ -385,13 +385,12 @@ export function CoursesShowcase() {
                 <TabsTrigger
                   key={category.id}
                   value={category.id}
-                  className="group relative overflow-hidden rounded-2xl border-2 bg-white p-6 shadow-lg transition-all hover:scale-105 data-[state=active]:border-primary data-[state=active]:shadow-xl"
+                  className="group relative rounded-2xl border-2 border-slate-200 bg-white p-6 shadow-md transition-all data-[state=active]:border-orange-500 data-[state=active]:bg-white data-[state=active]:text-orange-500 data-[state=active]:shadow-lg hover:border-orange-500"
                 >
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 transition-opacity group-data-[state=active]:opacity-10`}
-                  />
-                  <category.icon className="mx-auto mb-2 h-8 w-8 text-muted-foreground transition-colors group-data-[state=active]:text-primary" />
-                  <div className="text-sm font-semibold">{category.label}</div>
+                  <category.icon className="mx-auto mb-2 h-8 w-8 text-slate-600 transition-colors group-data-[state=active]:text-orange-500" />
+                  <div className="text-sm font-semibold text-slate-700 transition-colors group-data-[state=active]:text-orange-500">
+                    {category.label}
+                  </div>
                 </TabsTrigger>
               ))}
             </TabsList>

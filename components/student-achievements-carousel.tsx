@@ -66,14 +66,14 @@ export function StudentAchievementsCarousel() {
 
   const getVisibleMembers = () => {
     const members = []
-    const count = isMobile ? 1 : 3
+    const count = 3 // Always show 3 cards
     for (let i = 0; i < count; i++) {
       members.push(achievements[(currentIndex + i) % achievements.length])
     }
     return members
   }
 
-  const cardWidth = isMobile ? "w-full" : "w-[calc(33.333%-1rem)]"
+  const cardWidth = "w-[calc(33.333%-0.75rem)]" // Equal width for 3 cards
 
   return (
     <section className="py-16 md:py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50">

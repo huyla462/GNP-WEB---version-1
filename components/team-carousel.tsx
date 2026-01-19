@@ -61,14 +61,14 @@ export function TeamCarousel() {
 
   const getVisibleMembers = () => {
     const members = []
-    const count = isMobile ? 1 : 3
+    const count = 3 // Always show 3 cards
     for (let i = 0; i < count; i++) {
       members.push(teamMembers[(currentIndex + i) % teamMembers.length])
     }
     return members
   }
 
-  const cardWidth = isMobile ? "w-full" : "w-[calc(33.333%-1rem)]"
+  const cardWidth = "w-[calc(33.333%-0.75rem)]" // Equal width for 3 cards
 
   return (
     <section className="py-16 md:py-20 bg-gradient-to-br from-indigo-50 via-white to-teal-50">

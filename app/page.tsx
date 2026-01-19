@@ -8,6 +8,7 @@ import { TeamCarousel } from "@/components/team-carousel"
 import { StudentAchievementsCarousel } from "@/components/student-achievements-carousel"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
+import { LearningMethods } from "@/components/learning-methods"
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <GPSPhilosophy />
         <TeamCarousel />
         <StudentAchievementsCarousel />
+        <LearningMethods />
         <Contact />
       </main>
       <Footer />

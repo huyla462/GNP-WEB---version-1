@@ -92,7 +92,7 @@ export function GPSPhilosophy() {
         {/* Three Pillars Grid */}
         <div
           ref={cardsRef}
-          className={`grid grid-cols-1 gap-8 md:grid-cols-3 mb-16 transition-all duration-700 ${
+          className={`grid grid-cols-3 gap-2 sm:gap-4 lg:gap-8 mb-8 sm:mb-16 transition-all duration-700 ${
             cardsVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >
@@ -101,45 +101,47 @@ export function GPSPhilosophy() {
             return (
               <div
                 key={index}
-                className={`group relative overflow-hidden rounded-2xl border-2 ${pillar.borderColor} ${pillar.bgColor} transition-all duration-500 hover:shadow-2xl hover:-translate-y-2`}
+                className={`group relative overflow-hidden rounded-xl sm:rounded-2xl border border-2 ${pillar.borderColor} ${pillar.bgColor} transition-all duration-500 hover:shadow-lg sm:hover:shadow-2xl hover:-translate-y-1 sm:hover:-translate-y-2`}
               >
                 {/* Background Accent */}
                 <div
                   className={`absolute -right-16 -top-16 h-32 w-32 rounded-full bg-gradient-to-br ${pillar.accentColor} opacity-10 group-hover:opacity-20 transition-opacity`}
                 />
 
-                <CardContent className="relative p-8">
+                <CardContent className="relative p-1.5 sm:p-4 lg:p-8 h-full flex flex-col">
                   {/* Icon */}
                   <div
-                    className={`mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br ${pillar.accentColor} shadow-lg`}
+                    className={`mb-1.5 sm:mb-3 lg:mb-4 inline-flex h-9 w-9 sm:h-12 sm:w-12 lg:h-16 lg:w-16 items-center justify-center rounded-full bg-gradient-to-br ${pillar.accentColor} shadow-md sm:shadow-lg flex-shrink-0`}
                   >
-                    <IconComponent className="h-8 w-8 text-white" />
+                    <IconComponent className="h-4.5 w-4.5 sm:h-6 sm:w-6 lg:h-8 lg:w-8 text-white" />
                   </div>
 
                   {/* Title */}
-                  <h3 className="mb-2 text-2xl font-bold text-foreground">{pillar.title}</h3>
-                  <p className="mb-4 text-sm font-semibold text-primary">{pillar.titleVi}</p>
+                  <h3 className="mb-0.5 sm:mb-2 text-xs sm:text-sm lg:text-2xl font-bold text-foreground line-clamp-2">{pillar.title}</h3>
+                  <p className="mb-1.5 sm:mb-2 lg:mb-3 text-xs font-semibold text-primary line-clamp-1">{pillar.titleVi}</p>
 
                   {/* Short Description */}
-                  <p className="mb-6 text-sm italic text-muted-foreground border-l-4 border-primary pl-4">
+                  <p className="mb-1.5 sm:mb-3 lg:mb-4 text-xs sm:text-xs lg:text-sm italic text-muted-foreground border-l-4 border-primary pl-1.5 sm:pl-3 lg:pl-4 line-clamp-2">
                     "{pillar.shortDesc}"
                   </p>
 
                   {/* Main Description */}
-                  <p className="mb-6 leading-relaxed text-foreground">{pillar.description}</p>
+                  <p className="mb-1.5 sm:mb-3 lg:mb-4 text-xs sm:text-xs lg:text-base leading-relaxed text-foreground hidden sm:block line-clamp-2">
+                    {pillar.description}
+                  </p>
 
                   {/* Highlights */}
-                  <div className="space-y-3">
-                    <p className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">
+                  <div className="space-y-0.5 sm:space-y-1.5 lg:space-y-2 flex-grow overflow-hidden">
+                    <p className="font-semibold text-xs uppercase tracking-wide text-muted-foreground hidden sm:block">
                       Học viên được rèn luyện để:
                     </p>
-                    <ul className="space-y-2">
-                      {pillar.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-start gap-3">
+                    <ul className="space-y-0.5 sm:space-y-1">
+                      {pillar.highlights.slice(0, 2).map((highlight, idx) => (
+                        <li key={idx} className="flex items-start gap-1 sm:gap-2">
                           <span
-                            className={`mt-1.5 h-2 w-2 rounded-full bg-gradient-to-r ${pillar.accentColor} flex-shrink-0`}
+                            className={`mt-0.5 sm:mt-1 h-1 w-1 sm:h-2 sm:w-2 rounded-full bg-gradient-to-r ${pillar.accentColor} flex-shrink-0`}
                           />
-                          <span className="text-sm text-foreground leading-snug">{highlight}</span>
+                          <span className="text-xs sm:text-sm text-foreground leading-snug line-clamp-2">{highlight}</span>
                         </li>
                       ))}
                     </ul>
